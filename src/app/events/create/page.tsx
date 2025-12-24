@@ -8,7 +8,7 @@ export default function CreateEventPage() {
     <div className="h-screen overflow-hidden bg-[#0b1220] text-white">
       <div className="mx-auto flex h-full max-w-5xl flex-col px-5 py-5 gap-4">
         {/* Header */}
-        <div className="flex flex-shrink-0 items-center justify-between">
+        <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link
               href="/"
