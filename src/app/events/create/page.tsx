@@ -5,8 +5,8 @@ import { EventForm } from '@/component/event/event-form';
 
 export default function CreateEventPage() {
   return (
-    <div className="h-screen overflow-hidden bg-[#0b1220] text-white">
-      <div className="mx-auto flex h-full max-w-5xl flex-col px-5 py-5 gap-4">
+    <div className="h-screen overflow-hidden flex flex-col bg-[#0b1220] text-white">
+      <div className="mx-auto flex h-full w-full max-w-5xl flex-col px-4 py-3 sm:px-5 sm:py-5 gap-3 sm:gap-4 overflow-hidden">
         {/* Header */}
         <div className="flex flex-shrink-0 items-center justify-between">
           <div className="flex items-center gap-3">

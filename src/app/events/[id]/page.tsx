@@ -144,10 +144,10 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0b1220] text-white">
-      <div className="mx-auto max-w-7xl px-6 py-8 space-y-6">
+    <div className="h-screen overflow-hidden flex flex-col bg-[#0b1220] text-white">
+      <div className="mx-auto flex h-full w-full max-w-7xl flex-col px-4 py-3 sm:px-6 sm:py-4 gap-3 sm:gap-4 overflow-hidden">
         {/* Top bar */}
-        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-shrink-0 flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-sm text-slate-400">
               <Link href="/" className="hover:text-white">
@@ -201,11 +201,11 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
         </div>
 
         {/* Hero and summary */}
-        <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
+        <div className="flex min-h-0 flex-1 flex-col gap-3 sm:gap-4 overflow-hidden lg:grid lg:grid-cols-[2fr_1fr]">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-[#0d1526]/80 via-[#0b1220]/90 to-[#0a1020]/90 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.85)]"
+            className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-[#0d1526]/80 via-[#0b1220]/90 to-[#0a1020]/90 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.85)] lg:overflow-y-auto"
           >
             <div className="relative h-64 w-full overflow-hidden">
               {event.imageUrl ? (
@@ -321,7 +321,7 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            className="overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-[#111c30]/95 via-[#0f182c]/90 to-[#0b1222]/90 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.85)]"
+            className="flex flex-shrink-0 flex-col overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-[#111c30]/95 via-[#0f182c]/90 to-[#0b1222]/90 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.85)] lg:overflow-y-auto"
           >
             <div className="border-b border-white/5 px-5 py-4">
               <h3 className="text-sm font-semibold text-white">Event Summary</h3>
@@ -371,7 +371,7 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
         </div>
 
         {/* Teams and tags */}
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="flex flex-shrink-0 flex-col gap-3 sm:gap-4 lg:grid lg:grid-cols-3">
           <div className="rounded-2xl border border-white/5 bg-[#0d1526]/80 p-5 shadow-[0_20px_60px_-45px_rgba(0,0,0,0.85)]">
             <div className="flex items-center justify-between">
               <h4 className="text-sm font-semibold text-white">Teams</h4>
@@ -413,7 +413,7 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
         </div>
 
         {/* Ticket collections area */}
-        <div className="overflow-hidden rounded-2xl border border-white/5 bg-[#0d1526]/80 shadow-[0_20px_60px_-45px_rgba(0,0,0,0.85)]">
+        <div className="flex flex-shrink-0 flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#0d1526]/80 shadow-[0_20px_60px_-45px_rgba(0,0,0,0.85)]">
           <div className="flex flex-wrap gap-2 border-b border-white/5 px-5 py-3 text-sm font-semibold text-slate-300">
             <button className="rounded-lg bg-white/10 px-3 py-1.5 text-white shadow-inner border border-white/10">
               Ticket Collections
