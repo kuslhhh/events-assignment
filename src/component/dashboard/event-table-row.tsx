@@ -77,37 +77,37 @@ export function EventTableRow({ event, index }: EventTableRowProps) {
       transition={{ delay: index * 0.05 }}
       className="border-b border-white/5 transition-colors hover:bg-white/5 text-sm"
     >
-      <td className="px-6 py-4">
-        <Link href={`/events/${event.id}`} className="flex items-center gap-3 group">
-          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#1f4b99] via-[#2d3f7c] to-[#0f1b3d] ring-1 ring-white/10 shadow-inner">
-            <span className="text-sm font-semibold text-white">
+      <td className="px-4 py-3 sm:px-6 sm:py-4">
+        <Link href={`/events/${event.id}`} className="flex items-center gap-2 sm:gap-3 group">
+          <div className="flex h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#1f4b99] via-[#2d3f7c] to-[#0f1b3d] ring-1 ring-white/10 shadow-inner">
+            <span className="text-xs sm:text-sm font-semibold text-white">
               {event.title.charAt(0).toUpperCase()}
             </span>
           </div>
-          <span className="font-medium text-slate-100 group-hover:text-blue-400 transition-colors line-clamp-1">
+          <span className="font-medium text-sm sm:text-base text-slate-100 group-hover:text-blue-400 transition-colors line-clamp-1">
             {event.title}
           </span>
         </Link>
       </td>
-      <td className="px-6 py-4 text-sm text-slate-300 whitespace-nowrap">
+      <td className="px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm text-slate-300 whitespace-nowrap">
         {formatDate(event.startDate)}, {formatTime(event.startDate)}
       </td>
-      <td className="px-6 py-4 text-sm text-slate-300">{event.location}</td>
-      <td className="px-6 py-4 text-sm text-slate-300 text-center">
+      <td className="px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm text-slate-300">{event.location}</td>
+      <td className="px-4 py-3 sm:px-6 sm:py-4 text-xs sm:text-sm text-slate-300 text-center">
         {ticketsSold ? ticketsSold.toLocaleString() : '—'}
       </td>
-      <td className="px-6 py-4">
+      <td className="px-4 py-3 sm:px-6 sm:py-4">
         <span
-          className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${status.colorClass}`}
+          className={`inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 sm:px-3 sm:py-1 text-xs font-semibold ${status.colorClass}`}
         >
           <span className={`h-1.5 w-1.5 rounded-full ${status.dotClass}`} />
           {status.label}
         </span>
       </td>
-      <td className="px-6 py-4">
+      <td className="px-4 py-3 sm:px-6 sm:py-4">
         <Link href={`/events/${event.id}`}>
-          <button className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-white/5 hover:text-white">
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <button className="rounded-lg p-1.5 sm:p-2 text-slate-400 transition-colors hover:bg-white/5 hover:text-white">
+            <svg className="h-4 w-4 sm:h-5 sm:w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 10a2 2 0 100 4 2 2 0 000-4zm0-6a2 2 0 100 4 2 2 0 000-4zm0 12a2 2 0 100 4 2 2 0 000-4z" />
             </svg>
           </button>

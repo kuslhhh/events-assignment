@@ -20,16 +20,16 @@ export default function EditEventPage({ params }: EditEventPageProps) {
 
   return (
     <div className="h-screen overflow-hidden bg-[#0b1220] text-white">
-      <div className="mx-auto flex h-full max-w-5xl flex-col gap-4 px-5 py-5">
+      <div className="mx-auto flex h-full max-w-5xl flex-col gap-3 sm:gap-4 px-3 py-3 sm:px-5 sm:py-5">
         {/* Header */}
-        <div className="flex flex-shrink-0 items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-shrink-0 items-start justify-between gap-2">
+          <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/"
-              className="rounded-full border border-white/10 bg-white/5 p-2 text-slate-200 transition hover:border-white/20 hover:bg-white/10"
+              className="rounded-full border border-white/10 bg-white/5 p-1.5 sm:p-2 text-slate-200 transition hover:border-white/20 hover:bg-white/10"
             >
               <svg
-                className="h-5 w-5"
+                className="h-4 w-4 sm:h-5 sm:w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -44,8 +44,8 @@ export default function EditEventPage({ params }: EditEventPageProps) {
             </Link>
             <div>
               <p className="text-xs text-slate-400">Event Management</p>
-              <h1 className="text-xl font-semibold text-white">Edit Event</h1>
-              <p className="text-sm text-slate-400">
+              <h1 className="text-lg sm:text-xl font-semibold text-white">Edit Event</h1>
+              <p className="hidden sm:block text-sm text-slate-400">
                 Update the details of your event
               </p>
             </div>
@@ -57,15 +57,15 @@ export default function EditEventPage({ params }: EditEventPageProps) {
         </div>
 
         {/* Main Content */}
-        <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#0d1526]/80 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.8)]">
-          <div className="flex-shrink-0 border-b border-white/5 px-5 py-3">
-            <h2 className="text-base font-semibold text-white">Event Details</h2>
+        <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-white/5 bg-[#0d1526]/80 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.8)]">
+          <div className="flex-shrink-0 border-b border-white/5 px-3 py-2 sm:px-5 sm:py-3">
+            <h2 className="text-sm sm:text-base font-semibold text-white">Event Details</h2>
             <p className="text-xs text-slate-400">
               Make changes and save your event information.
             </p>
           </div>
 
-          <div className="flex-1 overflow-y-auto px-5 py-5">
+          <div className="flex-1 overflow-y-auto px-3 py-3 sm:px-5 sm:py-5">
             {isLoading && <LoadingSpinner />}
 
             {error && (

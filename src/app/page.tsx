@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEvents } from '@/hooks/use-event';
 import { StatsCard } from '@/component/dashboard/stats-card';
@@ -108,15 +109,15 @@ export default function HomePage() {
 
   return (
     <div className="h-screen overflow-hidden bg-[#0b1220] text-white">
-      <div className="mx-auto flex h-full max-w-7xl flex-col gap-4 px-6 py-4">
+      <div className="mx-auto flex h-full max-w-7xl flex-col gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
         {/* Top bar */}
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
-            <p className="text-sm text-slate-400">Event Management</p>
-            <h1 className="text-2xl font-semibold text-white">Events</h1>
+            <p className="text-xs sm:text-sm text-slate-400">Event Management</p>
+            <h1 className="text-xl sm:text-2xl font-semibold text-white">Events</h1>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="relative hidden md:block">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <div className="relative hidden lg:block">
               <input
                 type="search"
                 placeholder="Search for anything"
@@ -160,11 +161,11 @@ export default function HomePage() {
                 4
               </span>
             </button>
-            <div className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-3 py-2 shadow-inner">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#1f4b99] to-[#0f1b3d] text-sm font-semibold">
+            <div className="flex items-center gap-2 sm:gap-3 rounded-full border border-white/10 bg-white/5 px-2 py-1.5 sm:px-3 sm:py-2 shadow-inner">
+              <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#1f4b99] to-[#0f1b3d] text-xs sm:text-sm font-semibold">
                 HC
               </div>
-              <div className="text-left">
+              <div className="hidden sm:block text-left">
                 <p className="text-sm font-semibold leading-5 text-white">Hailey Carter</p>
                 <p className="text-xs text-slate-400">Master Admin</p>
               </div>
@@ -174,12 +175,12 @@ export default function HomePage() {
 
         {/* Overview */}
         <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
-          <h2 className="text-lg font-semibold text-white">Event Overview</h2>
-          <div className="flex flex-wrap items-center gap-2">
+          <h2 className="text-base sm:text-lg font-semibold text-white">Event Overview</h2>
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {TIMEFRAMES.map((frame) => (
               <button
                 key={frame}
-                className={`rounded-full border px-3 py-1 text-xs font-semibold transition ${
+                className={`rounded-full border px-2.5 py-0.5 sm:px-3 sm:py-1 text-xs font-semibold transition ${
                   frame === '7D'
                     ? 'border-blue-500/60 bg-blue-500/15 text-blue-200'
                     : 'border-white/10 bg-white/5 text-slate-200 hover:border-white/20 hover:bg-white/10'
@@ -188,9 +189,9 @@ export default function HomePage() {
                 {frame}
               </button>
             ))}
-            <button className="rounded-full border border-white/10 bg-white/5 p-2 text-slate-200 transition hover:border-white/20 hover:bg-white/10">
+            <button className="rounded-full border border-white/10 bg-white/5 p-1.5 sm:p-2 text-slate-200 transition hover:border-white/20 hover:bg-white/10">
               <svg
-                className="h-4 w-4"
+                className="h-3.5 w-3.5 sm:h-4 sm:w-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -207,7 +208,7 @@ export default function HomePage() {
         </div>
 
         {/* Stats cards */}
-        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
           <StatsCard
             title="Total events"
             value={stats.total}
@@ -276,22 +277,22 @@ export default function HomePage() {
         </div>
 
         {/* Table */}
-        <section className="flex min-h-0 flex-1 flex-col rounded-2xl border border-white/5 bg-[#0d1526]/80 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.8)]">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/5 px-5 py-3">
+        <section className="flex min-h-0 flex-1 flex-col rounded-xl sm:rounded-2xl border border-white/5 bg-[#0d1526]/80 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.8)]">
+          <div className="flex flex-col gap-3 border-b border-white/5 px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:px-5 sm:py-3">
             <div className="flex items-center gap-3">
-              <h3 className="text-lg font-semibold text-white">Events ({filteredEvents.length})</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-white">Events ({filteredEvents.length})</h3>
             </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="relative">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <div className="relative flex-1 sm:flex-none">
                 <input
                   type="search"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search by event, location"
-                  className="h-10 w-60 rounded-lg border border-white/10 bg-white/5 pl-10 pr-3 text-sm text-white placeholder:text-slate-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                  className="h-9 w-full sm:w-60 rounded-lg border border-white/10 bg-white/5 pl-9 pr-3 text-sm text-white placeholder:text-slate-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                 />
                 <svg
-                  className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500"
+                  className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -304,7 +305,7 @@ export default function HomePage() {
                   />
                 </svg>
               </div>
-              <button className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200 transition hover:border-white/20 hover:bg-white/10">
+              <button className="hidden sm:flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200 transition hover:border-white/20 hover:bg-white/10">
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -315,7 +316,7 @@ export default function HomePage() {
                 </svg>
                 Filter
               </button>
-              <button className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200 transition hover:border-white/20 hover:bg-white/10">
+              <button className="hidden sm:flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200 transition hover:border-white/20 hover:bg-white/10">
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h18M6 12h12M10 20h4" />
                 </svg>
@@ -323,7 +324,7 @@ export default function HomePage() {
               </button>
               <Button
                 onClick={() => router.push('/events/create')}
-                className="bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+                className="w-full sm:w-auto bg-blue-600 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-white hover:bg-blue-700"
               >
                 + Create Event
               </Button>
@@ -331,44 +332,78 @@ export default function HomePage() {
           </div>
 
           <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-            <div className="overflow-x-auto">
+            <div className="hidden sm:block overflow-x-auto">
               <table className="min-w-full text-left">
                 <thead className="bg-white/5 text-xs uppercase tracking-wide text-slate-400">
                   <tr>
-                    <th className="px-6 py-3 font-semibold">Event Name</th>
-                    <th className="px-6 py-3 font-semibold">Date &amp; Time</th>
-                    <th className="px-6 py-3 font-semibold">Location</th>
-                    <th className="px-6 py-3 text-center font-semibold">Tickets Sold</th>
-                    <th className="px-6 py-3 font-semibold">Status</th>
-                    <th className="px-6 py-3" />
+                    <th className="px-4 py-2.5 sm:px-6 sm:py-3 font-semibold">Event Name</th>
+                    <th className="px-4 py-2.5 sm:px-6 sm:py-3 font-semibold">Date &amp; Time</th>
+                    <th className="px-4 py-2.5 sm:px-6 sm:py-3 font-semibold">Location</th>
+                    <th className="px-4 py-2.5 sm:px-6 sm:py-3 text-center font-semibold">Tickets Sold</th>
+                    <th className="px-4 py-2.5 sm:px-6 sm:py-3 font-semibold">Status</th>
+                    <th className="px-4 py-2.5 sm:px-6 sm:py-3" />
                   </tr>
                 </thead>
               </table>
             </div>
             <div className="flex-1 overflow-y-auto">
-              <table className="min-w-full text-left">
+              <div className="sm:hidden space-y-2 p-3">
+                {isLoading && <LoadingSpinner />}
+                {error && <ErrorMessage message={error.message} onRetry={() => refetch()} />}
+                {!isLoading && !error && paginatedEvents.length === 0 && (
+                  <EmptyState
+                    title="No events found"
+                    description="Try adjusting your search or filters"
+                    actionLabel="Create Event"
+                    actionHref="/events/create"
+                  />
+                )}
+                {!isLoading && !error && paginatedEvents.map((event) => (
+                  <Link key={event.id} href={`/events/${event.id}`}>
+                    <div className="rounded-lg border border-white/5 bg-white/5 p-3 space-y-2">
+                      <div className="flex items-center gap-2">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#1f4b99] to-[#0f1b3d] text-xs font-semibold">
+                          {event.title.charAt(0).toUpperCase()}
+                        </div>
+                        <h4 className="font-medium text-sm text-white flex-1 line-clamp-1">{event.title}</h4>
+                        <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold ${
+                          event.isActive ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/30' : 'bg-rose-500/10 text-rose-300 border border-rose-500/30'
+                        }`}>
+                          {event.isActive ? 'Active' : 'Cancelled'}
+                        </span>
+                      </div>
+                      <div className="text-xs text-slate-400 space-y-1">
+                        <p>{new Date(event.startDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+                        <p>{event.location}</p>
+                        {event.maxAttendees && <p>Tickets: {event.maxAttendees.toLocaleString()}</p>}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              <table className="hidden sm:table min-w-full text-left">
                 <tbody className="divide-y divide-white/5">{renderTableBody()}</tbody>
               </table>
             </div>
           </div>
 
-          <div className="flex items-center justify-between border-t border-white/5 px-5 py-3 text-sm text-slate-300">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-t border-white/5 px-3 py-2 sm:px-5 sm:py-3 text-sm text-slate-300">
+            <div className="flex items-center justify-center gap-1.5 sm:gap-2">
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page === 1}
-                className="h-9 w-9 rounded-lg border border-white/10 bg-white/5 text-center font-semibold transition hover:border-white/20 hover:bg-white/10 disabled:opacity-50"
+                className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg border border-white/10 bg-white/5 text-center font-semibold transition hover:border-white/20 hover:bg-white/10 disabled:opacity-50"
               >
                 ‹
               </button>
-              {Array.from({ length: totalPages }).map((_, idx) => {
+              {Array.from({ length: Math.min(totalPages, 5) }).map((_, idx) => {
                 const pageNumber = idx + 1;
                 const isActive = pageNumber === page;
                 return (
                   <button
                     key={pageNumber}
                     onClick={() => setPage(pageNumber)}
-                    className={`h-9 w-9 rounded-lg border text-center text-sm font-semibold transition ${
+                    className={`h-8 w-8 sm:h-9 sm:w-9 rounded-lg border text-center text-xs sm:text-sm font-semibold transition ${
                       isActive
                         ? 'border-blue-500/70 bg-blue-600/40 text-white'
                         : 'border-white/10 bg-white/5 text-slate-200 hover:border-white/20 hover:bg-white/10'
@@ -378,15 +413,16 @@ export default function HomePage() {
                   </button>
                 );
               })}
+              {totalPages > 5 && <span className="px-2 text-xs text-slate-400">...</span>}
               <button
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
-                className="h-9 w-9 rounded-lg border border-white/10 bg-white/5 text-center font-semibold transition hover:border-white/20 hover:bg-white/10 disabled:opacity-50"
+                className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg border border-white/10 bg-white/5 text-center font-semibold transition hover:border-white/20 hover:bg-white/10 disabled:opacity-50"
               >
                 ›
               </button>
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-center sm:text-right text-xs text-slate-400">
               Showing {(page - 1) * PAGE_SIZE + 1}-
               {Math.min(page * PAGE_SIZE, filteredEvents.length)} of {filteredEvents.length}
             </p>

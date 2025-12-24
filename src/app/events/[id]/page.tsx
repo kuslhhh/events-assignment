@@ -145,11 +145,11 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
 
   return (
     <div className="min-h-screen bg-[#0b1220] text-white">
-      <div className="mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <div className="mx-auto max-w-7xl px-3 py-4 sm:px-6 sm:py-8 space-y-4 sm:space-y-6">
         {/* Top bar */}
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="space-y-1">
-            <div className="flex items-center gap-2 text-sm text-slate-400">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-400">
               <Link href="/" className="hover:text-white">
                 Event Management
               </Link>
@@ -160,10 +160,10 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
               <span>/</span>
               <span className="text-white">Event Details</span>
             </div>
-            <h1 className="text-2xl font-semibold text-white">Event Details</h1>
+            <h1 className="text-xl sm:text-2xl font-semibold text-white">Event Details</h1>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="relative hidden md:block">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="relative hidden lg:block">
               <input
                 type="search"
                 placeholder="Search for anything"
@@ -186,14 +186,14 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
             <Button
               variant="secondary"
               onClick={() => router.push(`/events/${event.id}/edit`)}
-              className="border-white/20 bg-white/5 text-white hover:border-white/30 hover:bg-white/10"
+              className="flex-1 sm:flex-none border-white/20 bg-white/5 text-white hover:border-white/30 hover:bg-white/10 text-xs sm:text-sm px-3 py-1.5 sm:px-4 sm:py-2"
             >
               Edit
             </Button>
             <Button
               variant="danger"
               onClick={() => setIsDeleteModalOpen(true)}
-              className="border border-rose-500/40 bg-rose-600 text-white hover:bg-rose-700"
+              className="flex-1 sm:flex-none border border-rose-500/40 bg-rose-600 text-white hover:bg-rose-700 text-xs sm:text-sm px-3 py-1.5 sm:px-4 sm:py-2"
             >
               Delete
             </Button>
@@ -205,9 +205,9 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-[#0d1526]/80 via-[#0b1220]/90 to-[#0a1020]/90 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.85)]"
+            className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/5 bg-gradient-to-br from-[#0d1526]/80 via-[#0b1220]/90 to-[#0a1020]/90 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.85)]"
           >
-            <div className="relative h-64 w-full overflow-hidden">
+            <div className="relative h-48 sm:h-64 w-full overflow-hidden">
               {event.imageUrl ? (
                 <img
                   src={event.imageUrl}
@@ -217,7 +217,7 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
               ) : (
                 <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-blue-600 to-purple-700">
                   <svg
-                    className="h-20 w-20 text-white/70"
+                    className="h-16 w-16 sm:h-20 sm:w-20 text-white/70"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -234,81 +234,81 @@ export default function EventDetailPage({ params }: EventDetailPageProps) {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.15),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.15),transparent_45%)]" />
             </div>
 
-            <div className="space-y-4 px-6 pb-6 pt-5">
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#1f4b99] to-[#0f1b3d] text-base font-semibold shadow-inner">
+            <div className="space-y-3 sm:space-y-4 px-4 pb-4 pt-4 sm:px-6 sm:pb-6 sm:pt-5">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                <div className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#1f4b99] to-[#0f1b3d] text-sm sm:text-base font-semibold shadow-inner">
                   {event.title.charAt(0).toUpperCase()}
                 </div>
-                <div className="flex flex-col gap-1">
-                  <h2 className="text-xl font-semibold text-white leading-tight">
+                <div className="flex flex-col gap-1 flex-1 min-w-0">
+                  <h2 className="text-lg sm:text-xl font-semibold text-white leading-tight line-clamp-2">
                     {event.title}
                   </h2>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                     <span
-                      className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ${statusInfo?.colorClass ?? ''}`}
+                      className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 sm:px-3 sm:py-1 text-xs font-semibold ${statusInfo?.colorClass ?? ''}`}
                     >
                       <span className={`h-1.5 w-1.5 rounded-full ${statusInfo?.dotClass ?? ''}`} />
                       {statusInfo?.label ?? 'Upcoming'}
                     </span>
-                    <span className="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-200 border border-white/10">
+                    <span className="rounded-full bg-white/5 px-2 py-0.5 sm:px-3 sm:py-1 text-xs font-semibold text-slate-200 border border-white/10">
                       Draft
                     </span>
                   </div>
                 </div>
               </div>
 
-              <p className="text-sm text-slate-300">
+              <p className="text-xs sm:text-sm text-slate-300">
                 {event.description}
               </p>
 
-              <div className="grid gap-3 md:grid-cols-2">
-                <div className="flex items-center gap-3 text-sm text-slate-200">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-blue-200 border border-white/10">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="grid gap-2 sm:gap-3 sm:grid-cols-2">
+                <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-200">
+                  <span className="flex h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 items-center justify-center rounded-full bg-white/5 text-blue-200 border border-white/10">
+                    <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs text-slate-400">Date Range (Local)</p>
-                    <p className="font-semibold">{formatRange(event.startDate, event.endDate)}</p>
+                    <p className="font-semibold text-xs sm:text-sm break-words">{formatRange(event.startDate, event.endDate)}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 text-sm text-slate-200">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-emerald-200 border border-white/10">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-200">
+                  <span className="flex h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 items-center justify-center rounded-full bg-white/5 text-emerald-200 border border-white/10">
+                    <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2l9 4.5L12 11 3 6.5 12 2z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10.5L12 15l9-4.5M3 14.5L12 19l9-4.5" />
                     </svg>
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs text-slate-400">Category</p>
-                    <p className="font-semibold capitalize">{event.category}</p>
+                    <p className="font-semibold capitalize text-xs sm:text-sm">{event.category}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 text-sm text-slate-200">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-sky-200 border border-white/10">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-200">
+                  <span className="flex h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 items-center justify-center rounded-full bg-white/5 text-sky-200 border border-white/10">
+                    <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs text-slate-400">Location</p>
-                    <p className="font-semibold">{event.location}</p>
+                    <p className="font-semibold text-xs sm:text-sm break-words">{event.location}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 text-sm text-slate-200">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-amber-200 border border-white/10">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-200">
+                  <span className="flex h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 items-center justify-center rounded-full bg-white/5 text-amber-200 border border-white/10">
+                    <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs text-slate-400">Max Attendees</p>
-                    <p className="font-semibold">
+                    <p className="font-semibold text-xs sm:text-sm">
                       {event.maxAttendees ? event.maxAttendees.toLocaleString() : 'Not set'}
                     </p>
                   </div>

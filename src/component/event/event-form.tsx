@@ -184,7 +184,7 @@ export function EventForm({ event, mode }: EventFormProps) {
         </div>
       )}
 
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
         {/* Title */}
         <div className="md:col-span-2">
           <Input
@@ -289,23 +289,24 @@ export function EventForm({ event, mode }: EventFormProps) {
             onChange={handleChange}
             className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500"
           />
-          <label htmlFor="isActive" className="ml-2 text-sm text-gray-700">
+          <label htmlFor="isActive" className="ml-2 text-sm text-slate-300">
             Event is active
           </label>
         </div>
       </div>
 
       {/* Form Actions */}
-      <div className="flex items-center justify-end gap-4 border-t border-gray-200 pt-6">
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 sm:gap-4 border-t border-white/5 pt-4 sm:pt-6">
         <Button
           type="button"
           variant="ghost"
           onClick={() => router.back()}
           disabled={isLoading}
+          className="w-full sm:w-auto"
         >
           Cancel
         </Button>
-        <Button type="submit" isLoading={isLoading}>
+        <Button type="submit" isLoading={isLoading} className="w-full sm:w-auto">
           {mode === 'create' ? 'Create Event' : 'Update Event'}
         </Button>
       </div>
