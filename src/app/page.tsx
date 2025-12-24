@@ -107,10 +107,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="h-screen overflow-hidden flex flex-col bg-[#0b1220] text-white">
-      <div className="mx-auto flex h-full w-full max-w-7xl flex-col gap-4 px-4 py-3 sm:px-6 sm:py-4 overflow-hidden">
+    <div className="h-screen overflow-hidden bg-[#0b1220] text-white">
+      <div className="mx-auto flex h-full max-w-7xl flex-col gap-4 px-6 py-4">
         {/* Top bar */}
-        <div className="flex flex-shrink-0 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             <p className="text-sm text-slate-400">Event Management</p>
             <h1 className="text-2xl font-semibold text-white">Events</h1>
@@ -173,7 +173,7 @@ export default function HomePage() {
         </div>
 
         {/* Overview */}
-        <div className="flex flex-shrink-0 flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
           <h2 className="text-lg font-semibold text-white">Event Overview</h2>
           <div className="flex flex-wrap items-center gap-2">
             {TIMEFRAMES.map((frame) => (
@@ -207,7 +207,7 @@ export default function HomePage() {
         </div>
 
         {/* Stats cards */}
-        <div className="grid flex-shrink-0 gap-3 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           <StatsCard
             title="Total events"
             value={stats.total}

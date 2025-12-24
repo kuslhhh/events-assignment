@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full overflow-hidden">
-      <body className={`${inter.className} h-full overflow-hidden`}>
+    <html lang="en">
+      <body className={inter.className}>
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
